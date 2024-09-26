@@ -23,7 +23,7 @@ def read_jsonl(url: str) -> list:
 
     return data
 
-def show_data(data) -> None:
+def show_data(data: list) -> None:
     """Reads a list of dictionaries and prints the data."""
 
     print("Data type:", type(data))
@@ -32,3 +32,19 @@ def show_data(data) -> None:
     print("First 5 values: \n")
     for value in data[:5]:
         print(json.dumps(value, indent=2))
+
+def process_json(item: list) -> dict:
+    """Return flattened data with json objects as value if present"""
+
+    flattened_data = {}
+    nested_keys = {}
+
+    for key, value in item.items():
+        if isinstance(value, dict):  # If the value is a dictionary (nested)
+            nested_keys[key] = value
+        else:  # If the value is a simple type
+            flattened_data[key] = value
+
+    # Combine flattened data and nested JSON objects
+    flattened_data.update(nested_keys)
+    return flattened_data
