@@ -1,2 +1,5 @@
 # Parquet converted data
 *.parquet
+
+# Dependencies
+.venv
