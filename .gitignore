@@ -1,5 +1,8 @@
 # Parquet converted data
 *.parquet
 
+# Sys-related files
+auto_upgrade_pip_setuptools.py
+
 # Dependencies
 .venv
